@@ -1,4 +1,4 @@
-import { extend } from 'flarum/common/extend';
+import {extend} from 'flarum/common/extend';
 import app from 'flarum/forum/app';
 import CommentPost from 'flarum/forum/components/CommentPost';
 
@@ -10,7 +10,12 @@ app.initializers.add('justoverclock/broken-links-checker', () => {
 
     const httpGet = async (url) => {
       try {
-        return await fetch(url, {mode: 'no-cors'});
+        const response = await fetch(url, {
+          mode: "no-cors",
+          method: "HEAD",
+          cache: "force-cache"
+        })
+        return response
       } catch (error) {
         console.log(
           `${app.translator.trans('justoverclock-broken-links-checker.forum.broken-link')}: ${url}`
@@ -25,6 +30,7 @@ app.initializers.add('justoverclock/broken-links-checker', () => {
 
       if (link) {
         httpGet(href).then((statusCode) => {
+          console.log(statusCode)
           if (!statusCode) {
             link.classList.add('deactivateLink');
 
