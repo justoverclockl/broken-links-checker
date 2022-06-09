@@ -4,6 +4,8 @@
 
 A [Flarum](http://flarum.org) extension. Check for broken links inside posts
 
+![22](https://user-images.githubusercontent.com/79002016/172880907-b3e4f542-32ae-4c4e-92cf-f5f1662fbdb1.png)
+
 ## Installation
 
 Install with composer:
@@ -16,12 +18,10 @@ composer require justoverclock/broken-links-checker:"*"
 
 ```sh
 composer update justoverclock/broken-links-checker:"*"
-php flarum migrate
 php flarum cache:clear
 ```
 
 ## Links
 
 - [Packagist](https://packagist.org/packages/justoverclock/broken-links-checker)
-- [GitHub](https://github.com/justoverclock/broken-links-checker)
-- [Discuss](https://discuss.flarum.org/d/PUT_DISCUSS_SLUG_HERE)
+- [GitHub](https://github.com/justoverclockl/broken-links-checker)
