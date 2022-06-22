@@ -10,12 +10,11 @@ app.initializers.add('justoverclock/broken-links-checker', () => {
 
     const httpGet = async (url) => {
       try {
-        const response = await fetch(url, {
+        return await fetch(url, {
           mode: "no-cors",
           method: "HEAD",
           cache: "force-cache"
         })
-        return response
       } catch (error) {
         console.log(
           `${app.translator.trans('justoverclock-broken-links-checker.forum.broken-link')}: ${url}`
@@ -30,8 +29,7 @@ app.initializers.add('justoverclock/broken-links-checker', () => {
 
       if (link) {
         httpGet(href).then((statusCode) => {
-          console.log(statusCode)
-          if (!statusCode) {
+          if (!statusCode || !statusCode.ok) {
             link.classList.add('deactivateLink');
 
             const brokenLink = document.createElement('span');
